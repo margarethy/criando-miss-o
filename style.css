@@ -1,10 +1,9 @@
-:root{
-    --cor-fundo: #01080E ;
-    --cor-principal: #0B0D20 ;
+:root {
+    --cor-fundo: #01080E;
+    --cor-principal: #0B0D20;
     --cor-secundaria: #212333; 
     --cor-destaque: #2BDEFD;
     --cor-texto: #D7F9FF;
-
 }
 
 body {
@@ -14,17 +13,20 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    line-height: 1.6; /* Melhor legibilidade */
 }
 
-.caixa-principal{
+.caixa-principal {
     background-color: var(--cor-principal);
     width: 90%;
     max-width: 600px;
     text-align: center;
     padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+    border-radius: 10px; /* Bordas arredondadas */
 }
 
-h1{
+h1 {
     color: var(--cor-destaque);
 }
 
@@ -34,10 +36,37 @@ button {
     border: none;
     border-radius: 15px;
     padding: 15px;
-    transition: background-color 0.3s;
+    margin: 10px 0; /* Espaçamento entre botões */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transição suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra nos botões */
 }
 
-button:hover{
+button:hover {
     background-color: var(--cor-destaque);
     color: var(--cor-principal);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+button:focus {
+    outline: 2px solid var(--cor-destaque); /* Destaque no foco */
+    outline-offset: 4px;
+}
+
+.texto-resultado {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--cor-destaque);
+}
+
+@media (max-width: 480px) {
+    .caixa-principal {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
 }
