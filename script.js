@@ -26,7 +26,7 @@ const perguntas = [
             }
         ]
     },
-    // ...restante das perguntas...
+    // Adicione mais perguntas aqui, se necessário
 ];
 
 let atual = 0;
