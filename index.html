@@ -4,17 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>Você decide o futuro da IA</title>
 </head>
 <body>
-    <div class="caixa-principal">
+    <!-- Seção principal do site -->
+    <main class="caixa-principal">
         <h1>Você decide o futuro da IA</h1>
-        <div class="caixa-perguntas"></div>
-        <div class="caixa-alternativas"></div>
-        <div class="caixa-resultado">
+        
+        <!-- Seção de perguntas -->
+        <section class="caixa-perguntas" aria-labelledby="perguntas-titulo">
+            <h2 id="perguntas-titulo" hidden>Perguntas</h2>
+        </section>
+        
+        <!-- Seção de alternativas -->
+        <section class="caixa-alternativas" aria-labelledby="alternativas-titulo">
+            <h2 id="alternativas-titulo" hidden>Alternativas</h2>
+        </section>
+        
+        <!-- Seção de resultado -->
+        <section class="caixa-resultado" aria-labelledby="resultado-titulo">
+            <h2 id="resultado-titulo" hidden>Resultado</h2>
             <p class="texto-resultado"></p>
-        </div>
-    </div>
-    <script src="script.js"></script>
+        </section>
+    </main>
+    
+    <!-- Script principal -->
+    <script src="script.js" defer></script>
 </body>
 </html>
