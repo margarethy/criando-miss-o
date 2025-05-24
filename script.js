@@ -1,9 +1,11 @@
+// Seleciona os elementos principais do DOM
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
+// Dados das perguntas
 const perguntas = [
     {
         enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
@@ -72,11 +74,11 @@ const perguntas = [
     },
 ];
 
-
 let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
 
+// Mostra a pergunta atual
 function mostraPergunta() {
     if (atual >= perguntas.length) {
         mostraResultado();
@@ -88,8 +90,9 @@ function mostraPergunta() {
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas) {
+// Mostra as alternativas da pergunta atual
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
@@ -97,6 +100,7 @@ function mostraAlternativas(){
     }
 }
 
+// Processa a resposta selecionada
 function respostaSelecionada(opcaoSelecionada) {
     const afirmacoes = opcaoSelecionada.afirmacao;
     historiaFinal += afirmacoes + " ";
@@ -104,10 +108,12 @@ function respostaSelecionada(opcaoSelecionada) {
     mostraPergunta();
 }
 
+// Mostra o resultado final
 function mostraResultado() {
     caixaPerguntas.textContent = "Em 2049...";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
 }
 
+// Inicia o jogo
 mostraPergunta();
