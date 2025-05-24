@@ -14,6 +14,7 @@ body {
     align-items: center;
     min-height: 100vh;
     line-height: 1.6; /* Melhor legibilidade */
+    letter-spacing: 0.5px; /* Espaçamento entre letras */
 }
 
 .caixa-principal {
@@ -37,7 +38,7 @@ button {
     border-radius: 15px;
     padding: 15px;
     margin: 10px 0; /* Espaçamento entre botões */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Transição suave */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transição suave */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra nos botões */
 }
 
@@ -45,11 +46,20 @@ button:hover {
     background-color: var(--cor-destaque);
     color: var(--cor-principal);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação */
 }
 
 button:focus {
     outline: 2px solid var(--cor-destaque); /* Destaque no foco */
     outline-offset: 4px;
+    transition: outline 0.2s ease-in-out;
+}
+
+button:active {
+    background-color: var(--cor-destaque);
+    color: var(--cor-principal);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98); /* Efeito de "pressionar" */
 }
 
 .texto-resultado {
@@ -70,6 +80,19 @@ button:focus {
         font-size: 14px;
     }
 }
+
+@media (max-width: 320px) {
+    .caixa-principal {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
