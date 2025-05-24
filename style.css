@@ -104,3 +104,152 @@ button:active {
     white-space: nowrap;
     border: 0;
 }
+:root {
+    --cor-fundo: #01080E;
+    --cor-principal: #0B0D20;
+    --cor-secundaria: #212333; 
+    --cor-destaque: #2BDEFD;
+    --cor-texto: #D7F9FF;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6; /* Melhor legibilidade */
+    letter-spacing: 0.5px; /* Espaçamento entre letras */
+}
+
+.caixa-principal {
+    background-color: var(--cor-principal);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+h1 {
+    color: var(--cor-destaque);
+}
+
+button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0; /* Espaçamento entre botões */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease; /* Transição suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra nos botões */
+}
+
+button:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-principal);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+button:focus {
+    outline: 2px solid var(--cor-destaque); /* Destaque no foco */
+    outline-offset: 4px;
+    transition: outline 0.2s ease-in-out;
+}
+
+button:active {
+    background-color: var(--cor-destaque);
+    color: var(--cor-principal);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98); /* Efeito de "pressionar" */
+}
+
+.texto-resultado {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--cor-destaque);
+}
+
+@media (max-width: 480px) {
+    .caixa-principal {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 320px) {
+    .caixa-principal {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+/* Estilo padrão */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.caixa-principal {
+    text-align: center;
+    margin: 20px;
+}
+
+.botao-acessibilidade {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.botao-acessibilidade:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para alto contraste */
+body.alto-contraste {
+    background-color: #000;
+    color: #fff;
+}
+
+body.alto-contraste a,
+body.alto-contraste button {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #fff;
+}
