@@ -3,8 +3,7 @@ const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
-const botaoReiniciar = document.querySelector(".botao-reiniciar"); // Seleciona o botão já existente no HTML
-
+const botaoReiniciar = document.querySelector(".botao-reiniciar"); 
 const perguntas = [
     {
         enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
@@ -32,7 +31,6 @@ const perguntas = [
             }
         ]
     },
-    // ... (restante das perguntas permanece igual)
 ];
 
 let atual = 0;
@@ -47,7 +45,7 @@ function mostraPergunta() {
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaPerguntas.classList.remove("mostrar");
-    setTimeout(() => caixaPerguntas.classList.add("mostrar"), 50); // Animação
+    setTimeout(() => caixaPerguntas.classList.add("mostrar"), 50);
     caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
@@ -58,7 +56,7 @@ function mostraAlternativas() {
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.classList.add("botao-alternativa");
         botaoAlternativas.addEventListener("click", () => {
-            botaoAlternativas.style.backgroundColor = "#d3d3d3"; // Feedback visual
+            botaoAlternativas.style.backgroundColor = "#d3d3d3"; 
             respostaSelecionada(alternativa);
         });
         caixaAlternativas.appendChild(botaoAlternativas);
@@ -85,7 +83,7 @@ function mostraResultado() {
 function reiniciarJogo() {
     atual = 0;
     historiaFinal = "";
-    botaoReiniciar.style.display = "none"; // Oculta o botão novamente
+    botaoReiniciar.style.display = "none";
     mostraPergunta();
 }
 
