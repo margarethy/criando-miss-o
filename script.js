@@ -79,7 +79,11 @@ function mostraResultado() {
 
     // Exibe o botão de reinício
     botaoReiniciar.style.display = "inline-block";
-    botaoReiniciar.addEventListener("click", reiniciarJogo);
+
+    // Remove event listeners antigos e adiciona um novo
+    botaoReiniciar.replaceWith(botaoReiniciar.cloneNode(true));
+    const novoBotaoReiniciar = document.querySelector(".botao-reiniciar");
+    novoBotaoReiniciar.addEventListener("click", reiniciarJogo);
 }
 
 function reiniciarJogo() {
