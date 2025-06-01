@@ -67,7 +67,11 @@ h1 {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    display: inline-block;
+    display: none; /* Oculto por padrão */
+}
+
+.botao-reiniciar.mostrar {
+    display: inline-block; /* Exibido quando necessário */
 }
 
 .botao-reiniciar:hover {
