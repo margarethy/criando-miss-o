@@ -3,6 +3,7 @@ const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
+const botaoReiniciar = document.querySelector(".botao-reiniciar"); // Seleciona o botão já existente no HTML
 
 const perguntas = [
     {
@@ -76,15 +77,16 @@ function mostraResultado() {
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
 
-    const botaoReiniciar = document.createElement("button");
-    botaoReiniciar.textContent = "Reiniciar";
-    botaoReiniciar.classList.add("botao-reiniciar");
-    botaoReiniciar.addEventListener("click", () => {
-        atual = 0;
-        historiaFinal = "";
-        mostraPergunta();
-    });
-    caixaResultado.appendChild(botaoReiniciar);
+    // Exibe o botão de reinício
+    botaoReiniciar.style.display = "inline-block";
+    botaoReiniciar.addEventListener("click", reiniciarJogo);
+}
+
+function reiniciarJogo() {
+    atual = 0;
+    historiaFinal = "";
+    botaoReiniciar.style.display = "none"; // Oculta o botão novamente
+    mostraPergunta();
 }
 
 mostraPergunta();
