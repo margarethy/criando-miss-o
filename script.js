@@ -3,7 +3,7 @@ const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
-const botaoReiniciar = document.querySelector(".botao-reiniciar"); // Seleciona o botão já existente no HTML
+const botaoReiniciar = document.querySelector(".botao-reiniciar"); // Seleciona o botão já existente no HTML//
 
 const perguntas = [
     {
