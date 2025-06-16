@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: var(--cor-fundo);
+    background-image: url(galaxy.jpg);
     color: var(--cor-texto);
     display: flex;
     justify-content: center;
