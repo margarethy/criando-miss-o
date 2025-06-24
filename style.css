@@ -1,69 +1,67 @@
-/* Variáveis para tema escuro */
 :root {
-  --cor-fundo: #0b0f1a;
-  --cor-principal: #101522;
-  --cor-secundaria: #1c1f2e;
-  --cor-destaque: #00e5ff;
-  --cor-texto: #d6faff;
-  --cor-botao: #00e5ff;
-  --cor-botao-hover: #00bcd4;
-  --cor-botao-reiniciar: #ff6f61;
-  --cor-botao-reiniciar-hover: #e65a50;
+  --cor-fundo: #121212;
+  --cor-principal: #1f1f2e;
+  --cor-secundaria: #28293d;
+  --cor-destaque: #00ffc8;
+  --cor-texto: #a3f7ef;
+  --cor-botao: #00ffc8;
+  --cor-botao-hover: #00bfa5;
+  --cor-botao-reiniciar: #ff5c5c;
+  --cor-botao-reiniciar-hover: #e04e4e;
 }
 
-/* Variáveis para tema claro */
 body.claro {
-  --cor-fundo: #f9f9f9;
+  --cor-fundo: #f0f4f8;
   --cor-principal: #ffffff;
-  --cor-secundaria: #e0e0e0;
-  --cor-destaque: #007acc;
-  --cor-texto: #222222;
-  --cor-botao: #007acc;
-  --cor-botao-hover: #005f99;
-  --cor-botao-reiniciar: #ff4c4c;
-  --cor-botao-reiniciar-hover: #cc3b3b;
+  --cor-secundaria: #dfe6eb;
+  --cor-destaque: #00796b;
+  --cor-texto: #004d40;
+  --cor-botao: #00796b;
+  --cor-botao-hover: #004d40;
+  --cor-botao-reiniciar: #d32f2f;
+  --cor-botao-reiniciar-hover: #9a2424;
 }
 
 body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .caixa-principal {
   background-color: var(--cor-principal);
-  width: 90%;
   max-width: 600px;
-  text-align: center;
+  width: 90%;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
-  transition: background-color 0.5s ease;
+  border-radius: 15px;
+  box-shadow: 0 0 20px var(--cor-destaque);
+  text-align: center;
+  transition: background-color 0.5s;
 }
 
 h1 {
   color: var(--cor-destaque);
   margin-bottom: 25px;
-  text-shadow: 0 0 5px var(--cor-destaque);
+  text-shadow: 0 0 8px var(--cor-destaque);
 }
 
 header #toggleTema {
-  background: var(--cor-botao);
-  border: none;
+  background-color: var(--cor-botao);
   color: var(--cor-principal);
+  border: none;
+  padding: 10px 20px;
   font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
   font-size: 14px;
-  margin-bottom: 15px;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s;
 }
 
 header #toggleTema:hover {
@@ -98,13 +96,13 @@ header #toggleTema:hover {
   background-color: var(--cor-botao);
   color: var(--cor-principal);
   border: none;
-  padding: 12px 18px;
+  padding: 14px 20px;
   margin: 8px;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 229, 255, 0.3);
+  font-size: 17px;
+  box-shadow: 0 2px 6px var(--cor-botao);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .botao-alternativa:hover,
@@ -119,13 +117,13 @@ header #toggleTema:hover {
   background-color: var(--cor-botao-reiniciar);
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 14px 24px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
   margin: 10px 5px 0;
   display: none;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .botao-reiniciar:hover,
@@ -143,21 +141,21 @@ header #toggleTema:hover {
 }
 
 .texto-resultado {
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.6;
-  margin-top: 20px;
+  margin-top: 25px;
   white-space: pre-line;
 }
 
 footer {
   margin-top: 40px;
-  text-align: center;
   font-size: 0.9em;
-  color: #aaa;
-  transition: color 0.5s ease;
+  color: #777;
+  text-align: center;
+  transition: color 0.5s;
 }
 
-/* Responsividade */
+/* Responsivo */
 @media (max-width: 480px) {
   .caixa-principal {
     padding: 20px;
@@ -166,7 +164,7 @@ footer {
   .botao-alternativa,
   .botao-reiniciar,
   .botao-exportar {
-    font-size: 14px;
-    padding: 10px 16px;
+    font-size: 15px;
+    padding: 12px 18px;
   }
 }
