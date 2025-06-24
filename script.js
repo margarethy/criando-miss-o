@@ -1,96 +1,107 @@
-const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
-const botaoReiniciar = document.querySelector(".botao-reiniciar"); // Seleciona o botão já existente no HTML//
+const botaoReiniciar = document.querySelector(".botao-reiniciar");
+const botaoExportar = document.querySelector(".botao-exportar");
+const toggleTema = document.getElementById("toggleTema");
 
 const perguntas = [
-    {
-        enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
-        alternativas: [
-            {
-                texto: "Isso é assustador!",
-                afirmacao: "Você ficou receoso com o avanço da tecnologia."
-            },
-            {
-                texto: "Isso é maravilhoso!",
-                afirmacao: "Você ficou animado com as possibilidades da tecnologia."
-            }
-        ]
-    },
-    {
-        enunciado: "Com a descoberta desta tecnologia, chamada Inteligência Artificial, uma professora de tecnologia da escola decidiu fazer uma sequência de aulas sobre esta tecnologia. No fim de uma aula ela pede que você escreva um trabalho sobre o uso de IA em sala de aula. Qual atitude você toma?",
-        alternativas: [
-            {
-                texto: "Utiliza uma ferramenta de busca na internet que utiliza IA para que ela ajude a encontrar informações relevantes para o trabalho e explique numa linguagem que facilite o entendimento.",
-                afirmacao: "Você usou a IA como uma ferramenta de apoio."
-            },
-            {
-                texto: "Escreve o trabalho com base nas conversas que teve com colegas, algumas pesquisas na internet e conhecimentos próprios sobre o tema.",
-                afirmacao: "Você preferiu confiar no seu próprio conhecimento."
-            }
-        ]
-    },
-    // ... (restante das perguntas permanece igual)
+  {
+    enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter. Qual o primeiro pensamento?",
+    alternativas: [
+      { texto: "Isso é assustador!", afirmacao: "Você ficou receoso com o avanço da tecnologia" },
+      { texto: "Isso é maravilhoso!", afirmacao: "Você ficou animado com as possibilidades da tecnologia" }
+    ]
+  },
+  {
+    enunciado: "Sua professora pede um trabalho sobre IA. Como você reage?",
+    alternativas: [
+      { texto: "Uso IA para me ajudar a entender o tema.", afirmacao: "Você usou a IA como apoio educacional" },
+      { texto: "Faço tudo com o que já sei e pesquiso por conta própria.", afirmacao: "Você confiou na sua autonomia" }
+    ]
+  }
 ];
 
 let atual = 0;
-let perguntaAtual;
 let historiaFinal = "";
 
+// Efeito sonoro (click suave)
+const audioClick = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
+audioClick.volume = 0.2;
+
 function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaPerguntas.classList.remove("mostrar");
-    setTimeout(() => caixaPerguntas.classList.add("mostrar"), 50); // Animação
-    caixaAlternativas.textContent = "";
-    mostraAlternativas();
-}
+  if (atual >= perguntas.length) {
+    mostraResultado();
+    return;
+  }
 
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.classList.add("botao-alternativa");
-        botaoAlternativas.addEventListener("click", () => {
-            botaoAlternativas.style.backgroundColor = "#d3d3d3"; // Feedback visual
-            respostaSelecionada(alternativa);
-        });
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
-}
+  const perguntaAtual = perguntas[atual];
+  caixaPerguntas.textContent = perguntaAtual.enunciado;
+  caixaAlternativas.innerHTML = "";
 
-function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacoes + " ";
-    atual++;
-    mostraPergunta();
+  perguntaAtual.alternativas.forEach((alternativa) => {
+    const botao = document.createElement("button");
+    botao.textContent = alternativa.texto;
+    botao.classList.add("botao-alternativa");
+
+    botao.addEventListener("click", () => {
+      audioClick.currentTime = 0;
+      audioClick.play();
+
+      document.querySelectorAll(".botao-alternativa").forEach(b => b.disabled = true);
+      botao.style.backgroundColor = "#d3d3d3";
+      historiaFinal += alternativa.afirmacao + ".\n";
+      atual++;
+      setTimeout(mostraPergunta, 400);
+    });
+
+    caixaAlternativas.appendChild(botao);
+  });
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Em 2049...";
-    textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+  caixaPerguntas.textContent = "Em 2049...";
+  textoResultado.textContent = historiaFinal.trim();
+  caixaAlternativas.innerHTML = "";
 
-    // Exibe o botão de reinício
-    botaoReiniciar.style.display = "inline-block";
-
-    // Remove event listeners antigos e adiciona um novo
-    botaoReiniciar.replaceWith(botaoReiniciar.cloneNode(true));
-    const novoBotaoReiniciar = document.querySelector(".botao-reiniciar");
-    novoBotaoReiniciar.addEventListener("click", reiniciarJogo);
+  botaoReiniciar.classList.add("mostrar");
+  botaoExportar.classList.add("mostrar");
 }
 
 function reiniciarJogo() {
-    atual = 0;
-    historiaFinal = "";
-    botaoReiniciar.style.display = "none"; // Oculta o botão novamente
-    mostraPergunta();
+  atual = 0;
+  historiaFinal = "";
+  textoResultado.textContent = "";
+  botaoReiniciar.classList.remove("mostrar");
+  botaoExportar.classList.remove("mostrar");
+  mostraPergunta();
 }
+
+botaoReiniciar.addEventListener("click", reiniciarJogo);
+
+botaoExportar.addEventListener("click", () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(16);
+  doc.text("História do Futuro da IA", 20, 20);
+
+  const texto = historiaFinal.trim();
+  const linhas = doc.splitTextToSize(texto, 170);
+  doc.setFontSize(12);
+  doc.text(linhas, 20, 40);
+
+  doc.save("futuro-da-ia.pdf");
+});
+
+toggleTema.addEventListener("click", () => {
+  document.body.classList.toggle("claro");
+  if(document.body.classList.contains("claro")){
+    toggleTema.textContent = "Modo Escuro";
+  } else {
+    toggleTema.textContent = "Modo Claro";
+  }
+});
 
 mostraPergunta();
