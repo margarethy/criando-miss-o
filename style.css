@@ -32,22 +32,26 @@ body {
   justify-content: center;
   align-items: center;
   transition: background-color 0.5s, color 0.5s;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .caixa-principal {
   background-color: var(--cor-principal);
-  max-width: 600px;
-  width: 90%;
+  max-width: 700px;
+  width: 100%;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 0 20px var(--cor-destaque);
   text-align: center;
   transition: background-color 0.5s;
+  box-sizing: border-box;
 }
 
 h1 {
   color: var(--cor-destaque);
   margin-bottom: 25px;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
   text-shadow: 0 0 8px var(--cor-destaque);
 }
 
@@ -77,14 +81,6 @@ header #toggleTema:hover {
   animation: fadeInUp 0.5s forwards;
 }
 
-.caixa-alternativas {
-  animation-delay: 0.15s;
-}
-
-.caixa-resultado {
-  animation-delay: 0.3s;
-}
-
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -97,10 +93,12 @@ header #toggleTema:hover {
   color: var(--cor-principal);
   border: none;
   padding: 14px 20px;
-  margin: 8px;
+  margin: 10px 5px;
   border-radius: 12px;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
   box-shadow: 0 2px 6px var(--cor-botao);
   transition: background-color 0.3s, transform 0.2s;
 }
@@ -108,7 +106,7 @@ header #toggleTema:hover {
 .botao-alternativa:hover,
 .botao-alternativa:focus {
   background-color: var(--cor-botao-hover);
-  transform: scale(1.05);
+  transform: scale(1.03);
   outline: none;
 }
 
@@ -117,22 +115,19 @@ header #toggleTema:hover {
   background-color: var(--cor-botao-reiniciar);
   color: white;
   border: none;
-  padding: 14px 24px;
+  padding: 12px 24px;
   border-radius: 12px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   margin: 10px 5px 0;
   display: none;
   transition: background-color 0.3s, transform 0.2s;
 }
 
 .botao-reiniciar:hover,
-.botao-exportar:hover,
-.botao-reiniciar:focus,
-.botao-exportar:focus {
+.botao-exportar:hover {
   background-color: var(--cor-botao-reiniciar-hover);
   transform: scale(1.05);
-  outline: none;
 }
 
 .botao-reiniciar.mostrar,
@@ -141,30 +136,29 @@ header #toggleTema:hover {
 }
 
 .texto-resultado {
-  font-size: 19px;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin-top: 25px;
   white-space: pre-line;
 }
 
 footer {
-  margin-top: 40px;
-  font-size: 0.9em;
-  color: #777;
+  margin-top: 30px;
+  font-size: 0.85rem;
+  color: #999;
   text-align: center;
-  transition: color 0.5s;
 }
 
 /* Responsivo */
-@media (max-width: 480px) {
-  .caixa-principal {
-    padding: 20px;
-  }
-
+@media (max-width: 600px) {
   .botao-alternativa,
   .botao-reiniciar,
   .botao-exportar {
-    font-size: 15px;
-    padding: 12px 18px;
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .caixa-principal {
+    padding: 20px 15px;
   }
 }
