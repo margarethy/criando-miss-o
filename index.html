@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Você decide o futuro da IA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Você decide o futuro da IA</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="caixa-principal">
-        <header>
-            <h1>Você decide o futuro da IA</h1>
-        </header>
-        <section class="caixa-perguntas"></section>
-        <section class="caixa-alternativas"></section>
-        <section class="caixa-resultado">
-            <p class="texto-resultado">Responda às perguntas para descobrir o futuro da IA!</p>
-            <button class="botao-reiniciar" style="display: none;">Reiniciar</button>
-        </section>
-    </div>
-    <footer>
-        <p>Desenvolvido por Renata - 2025</p>
-    </footer>
-    <script src="script.js"></script>
+  <main class="caixa-principal">
+    <header>
+      <h1>Você decide o futuro da IA</h1>
+      <button id="toggleTema" aria-label="Alternar tema claro/escuro">Modo Claro</button>
+    </header>
+
+    <section class="caixa-perguntas"></section>
+    <section class="caixa-alternativas"></section>
+
+    <section class="caixa-resultado">
+      <p class="texto-resultado">Responda às perguntas para descobrir o futuro da IA!</p>
+    </section>
+
+    <button class="botao-reiniciar">Reiniciar</button>
+    <button class="botao-exportar">Exportar PDF</button>
+  </main>
+
+  <footer>
+    <p>Desenvolvido por Renata - 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
