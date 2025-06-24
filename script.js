@@ -7,17 +7,31 @@ const toggleTema = document.getElementById("toggleTema");
 
 const perguntas = [
   {
-    enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter. Qual o primeiro pensamento?",
+    enunciado: "Como você acha que a tecnologia impactou o mercado de trabalho nas últimas décadas?",
     alternativas: [
-      { texto: "Isso é assustador!", afirmacao: "Você ficou receoso com o avanço da tecnologia" },
-      { texto: "Isso é maravilhoso!", afirmacao: "Você ficou animado com as possibilidades da tecnologia" }
+      { texto: "Criou novas oportunidades e profissões.", afirmacao: "A tecnologia ampliou o mercado de trabalho com novas profissões." },
+      { texto: "Eliminou empregos tradicionais e causou desemprego.", afirmacao: "A tecnologia trouxe desafios para empregos tradicionais." }
     ]
   },
   {
-    enunciado: "Sua professora pede um trabalho sobre IA. Como você reage?",
+    enunciado: "De que forma a tecnologia afetou a comunicação entre as pessoas?",
     alternativas: [
-      { texto: "Uso IA para me ajudar a entender o tema.", afirmacao: "Você usou a IA como apoio educacional" },
-      { texto: "Faço tudo com o que já sei e pesquiso por conta própria.", afirmacao: "Você confiou na sua autonomia" }
+      { texto: "Facilitou a conexão global e o compartilhamento de informações.", afirmacao: "A tecnologia tornou o mundo mais conectado e ágil." },
+      { texto: "Criou distanciamento e superficialidade nas relações.", afirmacao: "A tecnologia também pode gerar isolamento social." }
+    ]
+  },
+  {
+    enunciado: "Qual o impacto da tecnologia na privacidade das pessoas?",
+    alternativas: [
+      { texto: "Aumentou a exposição e risco de vazamento de dados.", afirmacao: "A privacidade foi impactada pela digitalização dos dados." },
+      { texto: "Ofereceu mais controle e transparência para os usuários.", afirmacao: "Novas ferramentas melhoram a proteção da privacidade." }
+    ]
+  },
+  {
+    enunciado: "Como a tecnologia influencia na educação atualmente?",
+    alternativas: [
+      { texto: "Facilita o acesso ao conhecimento e aprendizagem.", afirmacao: "A tecnologia democratiza e potencializa a educação." },
+      { texto: "Pode aumentar desigualdades e dependência digital.", afirmacao: "O acesso desigual pode limitar os benefícios educacionais." }
     ]
   }
 ];
@@ -25,9 +39,8 @@ const perguntas = [
 let atual = 0;
 let historiaFinal = "";
 
-// Efeito sonoro (click suave)
 const audioClick = new Audio('https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg');
-audioClick.volume = 0.2;
+audioClick.volume = 0.15;
 
 function mostraPergunta() {
   if (atual >= perguntas.length) {
@@ -60,7 +73,7 @@ function mostraPergunta() {
 }
 
 function mostraResultado() {
-  caixaPerguntas.textContent = "Em 2049...";
+  caixaPerguntas.textContent = "Reflexão Final";
   textoResultado.textContent = historiaFinal.trim();
   caixaAlternativas.innerHTML = "";
 
@@ -85,17 +98,15 @@ botaoExportar.addEventListener("click", () => {
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
-  doc.text("História do Futuro da IA", 20, 20);
+  doc.text("Reflexão sobre Tecnologia e Sociedade", 20, 20);
 
   const texto = historiaFinal.trim();
   const linhas = doc.splitTextToSize(texto, 170);
   doc.setFontSize(12);
   doc.text(linhas, 20, 40);
 
-  doc.save("futuro-da-ia.pdf");
-});
-
-toggleTema.addEventListener("click", () => {
+  doc.save("reflexao-tecnologia-sociedade.pdf");
+});toggleTema.addEventListener("click", () => {
   document.body.classList.toggle("claro");
   if(document.body.classList.contains("claro")){
     toggleTema.textContent = "Modo Escuro";
