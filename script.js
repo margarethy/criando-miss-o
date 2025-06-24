@@ -8,30 +8,34 @@ const toggleTema = document.getElementById("toggleTema");
 const perguntas = [
   {
     enunciado: "Como você acha que a tecnologia impactou o mercado de trabalho nas últimas décadas?",
+    imagem: "img/trabalho-tecnologia.jpg",
     alternativas: [
-      { texto: "Criou novas oportunidades e profissões.", afirmacao: "A tecnologia ampliou o mercado de trabalho com novas profissões." },
-      { texto: "Eliminou empregos tradicionais e causou desemprego.", afirmacao: "A tecnologia trouxe desafios para empregos tradicionais." }
+      { texto: "Criou novas oportunidades e profissões.", afirmacao: "A tecnologia ampliou o mercado de trabalho com novas profissões" },
+      { texto: "Eliminou empregos tradicionais e causou desemprego.", afirmacao: "A tecnologia trouxe desafios para empregos tradicionais" }
     ]
   },
   {
-    enunciado: "De que forma a tecnologia afetou a comunicação entre as pessoas?",
+    enunciado: "Como a tecnologia influencia o meio ambiente?",
+    imagem: "img/meio-ambiente.jpg",
     alternativas: [
-      { texto: "Facilitou a conexão global e o compartilhamento de informações.", afirmacao: "A tecnologia tornou o mundo mais conectado e ágil." },
-      { texto: "Criou distanciamento e superficialidade nas relações.", afirmacao: "A tecnologia também pode gerar isolamento social." }
+      { texto: "Ajuda a monitorar e preservar a natureza.", afirmacao: "A tecnologia tem papel positivo na proteção ambiental" },
+      { texto: "Contribui para o consumo excessivo e poluição.", afirmacao: "O uso irresponsável da tecnologia pode prejudicar o planeta" }
     ]
   },
   {
-    enunciado: "Qual o impacto da tecnologia na privacidade das pessoas?",
+    enunciado: "Qual o papel das redes sociais na sociedade atual?",
+    imagem: "img/redes-sociais.jpg",
     alternativas: [
-      { texto: "Aumentou a exposição e risco de vazamento de dados.", afirmacao: "A privacidade foi impactada pela digitalização dos dados." },
-      { texto: "Ofereceu mais controle e transparência para os usuários.", afirmacao: "Novas ferramentas melhoram a proteção da privacidade." }
+      { texto: "Facilitam a troca de ideias e conexão entre pessoas.", afirmacao: "As redes sociais promovem a comunicação global" },
+      { texto: "Causam vício, ansiedade e desinformação.", afirmacao: "O uso excessivo das redes pode afetar a saúde mental" }
     ]
   },
   {
-    enunciado: "Como a tecnologia influencia na educação atualmente?",
+    enunciado: "Como a tecnologia afeta a educação atualmente?",
+    imagem: "img/educacao.jpg",
     alternativas: [
-      { texto: "Facilita o acesso ao conhecimento e aprendizagem.", afirmacao: "A tecnologia democratiza e potencializa a educação." },
-      { texto: "Pode aumentar desigualdades e dependência digital.", afirmacao: "O acesso desigual pode limitar os benefícios educacionais." }
+      { texto: "Facilita o acesso ao conhecimento e aprendizado.", afirmacao: "A tecnologia democratiza e potencializa a educação" },
+      { texto: "Pode aumentar desigualdades entre estudantes.", afirmacao: "O acesso desigual à tecnologia pode gerar exclusão" }
     ]
   }
 ];
@@ -51,6 +55,14 @@ function mostraPergunta() {
   const perguntaAtual = perguntas[atual];
   caixaPerguntas.textContent = perguntaAtual.enunciado;
   caixaAlternativas.innerHTML = "";
+
+  const img = document.getElementById("imagem-pergunta");
+  if (perguntaAtual.imagem) {
+    img.src = perguntaAtual.imagem;
+    img.style.display = "block";
+  } else {
+    img.style.display = "none";
+  }
 
   perguntaAtual.alternativas.forEach((alternativa) => {
     const botao = document.createElement("button");
@@ -76,7 +88,7 @@ function mostraResultado() {
   caixaPerguntas.textContent = "Reflexão Final";
   textoResultado.textContent = historiaFinal.trim();
   caixaAlternativas.innerHTML = "";
-
+  document.getElementById("imagem-pergunta").style.display = "none";
   botaoReiniciar.classList.add("mostrar");
   botaoExportar.classList.add("mostrar");
 }
@@ -94,9 +106,7 @@ botaoReiniciar.addEventListener("click", reiniciarJogo);
 
 botaoExportar.addEventListener("click", () => {
   const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  doc.setFont("helvetica", "normal");
+  const doc = new jsPDF();doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
   doc.text("Reflexão sobre Tecnologia e Sociedade", 20, 20);
 
@@ -106,13 +116,11 @@ botaoExportar.addEventListener("click", () => {
   doc.text(linhas, 20, 40);
 
   doc.save("reflexao-tecnologia-sociedade.pdf");
-});toggleTema.addEventListener("click", () => {
+});
+
+toggleTema.addEventListener("click", () => {
   document.body.classList.toggle("claro");
-  if(document.body.classList.contains("claro")){
-    toggleTema.textContent = "Modo Escuro";
-  } else {
-    toggleTema.textContent = "Modo Claro";
-  }
+  toggleTema.textContent = document.body.classList.contains("claro") ? "Modo Escuro" : "Modo Claro";
 });
 
 mostraPergunta();
